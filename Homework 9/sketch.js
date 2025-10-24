@@ -48,7 +48,7 @@ function draw()
         square(520,425,5)
 
         textFont('Snell')
-        textSize(14)
-        text("Ce n'est pas une personne", 20, 400)
+        textSize(10)
+        text("Ce n'est pas une personne, by Nohl Griffin", 20, 400)
     }
 
