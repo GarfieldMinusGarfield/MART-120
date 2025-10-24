@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Contact Us!</title>
+    </head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .errorBorder {
+            border: 1px; color: red;
+        }
+    </style>
+    <body>
+        <h1>Contact Us!</h1>
+    <br />
+    <br>
+    <form>
+        Name: <input type="text" id="myTextbox" required><br>
+        Email: <input type="text" id="myTextbox" required><br>
+     <br>
+     <br>
+        <input type="checkbox" id="Yes" name="option" value="Yes" required>
+      <label for="Yes">By checking this box, you agree to the terms and agreements.</label>
+    <br>
+    <br>
+    <br>
+    </select>
+    <button>Submit</button>
+    </form>
+    <br />
+ 
+     <script>
+    function validateTextbox() 
+  const textbox = document.getElementById("placement");
+  if (textbox) {
+   if (textbox.value.trim() === ""){
+
+    textbox.classList.add("errorBorder");
+    return false;
+  } else {
+    textbox.classList.remove("errorBorder");
+  }
+}
+    </script>
+  </body>
+  <br>
+  <br> 
+  <a href="First Page.html">First Page</a>
+  <a href="Second Page.html">Second Page</a>
