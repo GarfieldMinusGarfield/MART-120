@@ -8,7 +8,12 @@ var starXSpeeds = [];
 var starBaseAlpha = []; // twinkle effect variable!
 var twinklePhase = []; // another twinkle effect variable but for phasing
 var NUM_STARS = 80; 
-
+// dark squares spawned by clicks
+var squareX = [];
+var squareY = [];
+var squareSize = [];
+var squareVX = [];
+var squareVY = [];
 function setup() {
     createCanvas(600, 430);
     //star code
@@ -74,6 +79,23 @@ function draw() {
             starYPos[i] += starYSpeed[i];
         }
     }
+
+    // dark square code for mouse click function
+    rectMode(CENTER);
+    fill(20);
+    for (var j = squareX.length - 1; j >= 0; j--) {
+        rect(squareX[j], squareY[j], squareSize[j], squareSize[j]);
+        // update
+        squareX[j] += squareVX[j];
+        squareY[j] += squareVY[j];
+        if (squareX[j] < -squareSize[j] || squareX[j] > width + squareSize[j] || squareY[j] < -squareSize[j] || squareY[j] > height + squareSize[j]) {
+            squareX.splice(j, 1);
+            squareY.splice(j, 1);
+            squareSize.splice(j, 1);
+            squareVX.splice(j, 1);
+            squareVY.splice(j, 1);
+        }
+    }
 }
 
 // draw star function
@@ -93,5 +115,19 @@ function drawStar(cx, cy, radius) {
     rect(cx, cy + offset, beamW, beamH, radius * 0.1);
     // left
     rect(cx - offset, cy, beamH, beamW, radius * 0.1);
+}
+
+// square jumpscare AAAHHHHHH
+function mouseClicked() {
+    var burst = 8;
+    for (var b = 0; b < burst; b++) {
+        squareX.push(mouseX);
+        squareY.push(mouseY);
+        squareSize.push(Math.floor(Math.random() * 10) + 6); 
+        var angle = Math.random() * TWO_PI;
+        var speed = Math.random() * 8 + 8; 
+        squareVX.push(Math.cos(angle) * speed);
+        squareVY.push(Math.sin(angle) * speed);
+    }
 }
 
